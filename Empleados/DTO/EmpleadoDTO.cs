@@ -1,8 +1,8 @@
 ﻿namespace Empleados.DTO
 {
-    public class EmpleadoDTO
+    public class EmpleadoDTO : AuditableEntityDTO
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string JobPossition { get; set; }
     }

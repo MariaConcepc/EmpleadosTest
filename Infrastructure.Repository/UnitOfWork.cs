@@ -13,9 +13,10 @@ namespace Infrastructure.Repository
         public UnitOfWork(ApplicationDbContext context)
         {
             this.context = context;
+            this.Empleados = new EMPLEADOSRepository(this.context);
         }
 
-        public IEMPLEADOSRepository Empleados { get; set; }
+        public IEMPLEADOSRepository Empleados { get; private set; }
 
         public async Task<bool> SaveChangesAsync()
         {

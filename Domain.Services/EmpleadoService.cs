@@ -1,6 +1,8 @@
 ﻿using Domain.Contract.Infrastructure;
 using Domain.Contract.Services;
 using Domain.Models;
+using Domain.Services.Extensions;
+using System.ComponentModel;
 
 namespace Domain.Services
 {
@@ -14,10 +16,12 @@ namespace Domain.Services
         }
 
       
-        public async Task<IEnumerable<Empleado>> GetAllAsync()
+        public async Task<ICollection<Empleado>> GetAllAsync()
         {
+          //  var empleados = new List<Empleado>() { new Empleado() { Id = new Guid(), Name = "Conchita",JobPossition = "Dev"} };
+                
             var empleados = await unitOfWork.Empleados.GetAllEmployeeAsync();
-            return (IEnumerable<Empleado>)empleados;
+            return (ICollection<Empleado>)empleados.ToDtoList();
          
         }
 

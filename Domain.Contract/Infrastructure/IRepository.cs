@@ -10,7 +10,7 @@ namespace Domain.Contract.Infrastructure
     {
         Task<IEnumerable<TEntity>> GetAllAsync();
 
-        void Add(TEntity entity);
+
 
 
     }
