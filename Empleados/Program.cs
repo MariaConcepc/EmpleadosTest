@@ -5,6 +5,7 @@ using Infraestructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.InstallServicesInAssembly();
 
 
 builder.Services.AddControllers();
@@ -12,8 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.InstallServicesInAssembly();
-builder.Services.AddScoped<IEmpleadoService, EmpleadoService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

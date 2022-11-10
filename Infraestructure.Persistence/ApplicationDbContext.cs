@@ -12,7 +12,8 @@ public class ApplicationDbContext : DbContext
         
     }
 
-    DbSet<Empleado> Empleado { get; set; }  
+    public DbSet<Empleado> Empleado { get; set; } 
+    
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

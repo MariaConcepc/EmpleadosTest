@@ -10,8 +10,8 @@ namespace Empleados.Installers
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-           // services.AddScoped<IEmpleadoService, EmpleadoService>();
-            
+            services.AddScoped<IEmpleadoService, EmpleadoService>();
+
         }
     }
 }

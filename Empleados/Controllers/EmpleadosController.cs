@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Domain.Contract.Services;
 using Domain.Services;
 using Empleados.DTO;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,10 @@ namespace Empleados.Controllers
     [ApiController]
     public class EmpleadosController: ControllerBase
     {
-        private readonly EmpleadoService empleadoService;
+        private readonly IEmpleadoService empleadoService;
         private readonly IMapper mapper;
 
-        public EmpleadosController(EmpleadoService empleadoService, IMapper mapper)
+        public EmpleadosController(IEmpleadoService empleadoService, IMapper mapper)
         {
             this.empleadoService = empleadoService;
             this.mapper = mapper;
@@ -25,7 +26,7 @@ namespace Empleados.Controllers
        {
             var empleados = await empleadoService.GetAllAsync();
 
-            if (empleados == null)
+            if (empleados == null || empleados.Count() == 0)
             {
                 return NotFound();
             }
