@@ -2,6 +2,7 @@
 using Domain.Services;
 using Empleados.DTO;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 
 namespace Empleados.Controllers
 {
@@ -32,5 +33,11 @@ namespace Empleados.Controllers
 
             return mapper.Map<EmpleadoDTO>(empleados);
        }
+
+        [HttpGet("Id:int")]
+        public async Task<ActionResult<EmpleadoDTO>> Get(int Id)
+        {
+            return NoContent();
+        }
     }
 }
