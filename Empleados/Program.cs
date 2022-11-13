@@ -1,6 +1,7 @@
 using Domain.Contract.Services;
 using Domain.Services;
 using Empleados.Extensions;
+using Empleados.Filters;
 using Infraestructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,15 +9,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddResponseCaching();
 builder.InstallServicesInAssembly();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(typeof(MyExceptionFilter));
+});
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-
 var app = builder.Build();
-
 
 
 app.Map("/mapa1", (app => {
@@ -38,6 +42,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseResponseCaching();
+
+app.UseCors();
 
 app.UseAuthentication();
 

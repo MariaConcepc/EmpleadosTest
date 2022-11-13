@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Domain.Contract.Services;
 using Domain.Services;
+using Empleados.Filters;
 
 namespace Empleados.Installers
 {
@@ -11,6 +12,8 @@ namespace Empleados.Installers
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddScoped<IEmpleadoService, EmpleadoService>();
+
+            services.AddTransient<MyActionFilter>();
 
         }
     }

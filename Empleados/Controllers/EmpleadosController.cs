@@ -3,6 +3,7 @@ using Domain.Contract.Services;
 using Domain.Models;
 using Domain.Services;
 using Empleados.DTO;
+using Empleados.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +31,8 @@ namespace Empleados.Controllers
 
         [HttpGet]
         //[ResponseCache(Duration = 30)]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [ServiceFilter(typeof(MyActionFilter))]
         public async Task<ActionResult<EmpleadoDTO>> Get()
         {
             logger.LogInformation("Iniciando el get de Empleados");
@@ -39,6 +41,7 @@ namespace Empleados.Controllers
 
             if (empleados == null || empleados.Count() == 0)
             {
+                throw new ApplicationException($"Error no se encontraron empleados{empleados}");
                 logger.LogWarning("no hay datos");
                 return NotFound();
             }
