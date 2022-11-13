@@ -13,6 +13,7 @@ namespace Infraestructure.Persistence.Configurations
             builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x => x.Name).HasMaxLength(250).IsRequired(true);
             builder.Property(x => x.JobPossition).HasMaxLength(250).IsRequired(true);
+            builder.Property(x => x.UrlPicture).HasMaxLength(500).IsRequired(false);
         }
     }  
 }
