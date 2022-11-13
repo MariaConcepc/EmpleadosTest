@@ -1,5 +1,6 @@
 ﻿using Domain.Contract.Infrastructure;
 using Infraestructure.Persistence;
+using Infraestructure.Persistence.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Linq.Expressions;
@@ -38,7 +39,6 @@ namespace Infrastucture.Repository
         {
             return await _dbSet.FindAsync(id);
         }
-
-
+              
     }
 }

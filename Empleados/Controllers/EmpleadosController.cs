@@ -40,8 +40,7 @@ namespace Empleados.Controllers
             var empleados = await empleadoService.GetAllAsync();
 
             if (empleados == null || empleados.Count() == 0)
-            {
-                throw new ApplicationException($"Error no se encontraron empleados{empleados}");
+            {                
                 logger.LogWarning("no hay datos");
                 return NotFound();
             }
@@ -57,6 +56,13 @@ namespace Empleados.Controllers
             //var employee = await empleadoService.GetById(Id);
             var employee = new Empleado();
             return mapper.Map<EmpleadoDTO>(employee);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Add([FromForm] EmpleadoDTO employeeDTO)
+        {
+           // await empleadoService.Add(mapper.Map<Empleado>(employeeDTO));
+            return NoContent();
         }
     }
 }

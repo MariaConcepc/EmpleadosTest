@@ -30,5 +30,14 @@ namespace Domain.Services
             var empleado = await unitOfWork.Empleados.GetByIdAsync(id);
             return (Empleado)empleado.ToDto();
         }
+
+        public async Task<bool> Add(Empleado empleado)
+        {
+            var employ = empleado.ToDto();
+            unitOfWork.Empleados.Add(employ);
+            return await unitOfWork.SaveChangesAsync();
+        }
+
+
     }
 }

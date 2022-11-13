@@ -27,5 +27,21 @@ namespace Domain.Services.Extensions
                 ? null
                 : domainList.Select(s => s.ToDto()).ToList();
         }
+
+        public static Infraestructure.Persistence.Models.Empleado  ToDto(this Domain.Models.Empleado domain)
+        {
+            return domain == null
+                ? null
+                : new Infraestructure.Persistence.Models.Empleado()
+                {
+                    Id = domain.Id,
+                    Name = domain.Name,
+                    JobPossition = domain.JobPossition,
+                    CreatedBy = domain.CreatedBy,
+                    CreatedOn = domain.CreatedOn,
+                    ModifiedBy = domain.ModifiedBy,
+                    ModifiedOn = domain.ModifiedOn
+                };
+        }
     }
 }

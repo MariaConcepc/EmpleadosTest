@@ -3,6 +3,7 @@ using Infraestructure.Persistence;
 using Infraestructure.Persistence.Models;
 using Infrastucture.Repository;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 
 namespace Infrastructure.Repository
 {
@@ -24,6 +25,10 @@ namespace Infrastructure.Repository
             return await _context.Empleado.FindAsync(id);
         }
 
+        public void Add(Empleado entity)
+        {
+            _context.Empleado.Add(entity);
+        }
 
     }
 }
