@@ -9,6 +9,7 @@ namespace Empleados.Helpers
         public AutoMapperProfile()
         {
             CreateMap<Empleado, EmpleadoDTO>();
+            CreateMap<Empleado, EmpleadoCreationDTO>().ReverseMap();
         }
         
     }
