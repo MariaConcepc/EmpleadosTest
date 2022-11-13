@@ -10,5 +10,7 @@ namespace Domain.Contract.Repository
     public interface IEMPLEADOSRepository
     {
         Task<IEnumerable<Empleado>> GetAllEmployeeAsync();
+
+        Task<Empleado> GetByIdAsync(object id);
     }
 }

@@ -19,10 +19,10 @@ namespace Infrastructure.Repository
             return await _context.Empleado.ToListAsync();
         }
 
-        //public async Task<IEnumerable<Empleado>> GetAllAsync()
-        //{
-        //    return await _context.Empleado.ToListAsync();
-        //}
+        public override async Task<Empleado> GetByIdAsync(object id)
+        {
+            return await _context.Empleado.FindAsync(id);
+        }
 
 
     }

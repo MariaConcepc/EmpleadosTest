@@ -25,5 +25,10 @@ namespace Domain.Services
          
         }
 
+        public async Task<Empleado> GetById(Guid id)
+        {
+            var empleado = await unitOfWork.Empleados.GetByIdAsync(id);
+            return (Empleado)empleado.ToDto();
+        }
     }
 }

@@ -35,10 +35,11 @@ namespace Empleados.Controllers
             return mapper.Map<EmpleadoDTO>(empleados);
        }
 
-        [HttpGet("Id:int")]
-        public async Task<ActionResult<EmpleadoDTO>> Get(int Id)
+        [HttpGet("Id:Guid")]
+        public async Task<ActionResult<EmpleadoDTO>> Get(Guid
+            Id)
         {
-            return NoContent();
+            var exist = await empleadoService.
         }
     }
 }
